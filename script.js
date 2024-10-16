@@ -1,6 +1,6 @@
 const frmaddRight = document.querySelector("#frmaddRight");
-const userID = document.querySelector("#username");
-const rightID = document.querySelector("#nickName");
+const userID = document.querySelector("#userID");
+const rightID = document.querySelector("#rightID");
 
 // action koppelen aan mijn formulier
 // maw: is wil iets doen als er op submit wordt gedrukt

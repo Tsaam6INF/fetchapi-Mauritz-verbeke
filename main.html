@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch information</title>
+  </head>
+  <body>
+    <div class="form_user">
+      <form action="#" id="frmaddRight">
+        <input type="text" name="userID" id="userID" />
+        <input type="text" name="rightID" id="rightID" />
+        <input type="submit" value="addRight" id="addRight" />
+      </form>
+    </div>
+    <script src="./script.js"></script>
+    <script>
+      fetch("http://192.168.5.113:3000/api/user/getuserrights")
+        .then((info) => info.json())
+        .then((data) => {
+          console.log(data);
+          data.data.forEach((element) => {
+            console.log(element);
+          });
+        });
+    </script>
+  </body>
+</html>

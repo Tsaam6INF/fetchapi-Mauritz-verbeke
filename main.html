@@ -11,18 +11,34 @@
         <p>userId</p>
         <input type="text" name="userID" id="userID" />
         <p>rightID</p>
-        <input type="text" name="rightID" id="rightID" />
+        <select name="rightID" id="rightID">
+          <!-- Options will be populated here -->
+        </select>
         <input type="submit" value="addRight" id="addRight" />
       </form>
     </div>
     <script src="./script.js"></script>
     <script>
+      // Fetch user rights
       fetch("http://192.168.5.113:3000/api/user/getuserrights")
         .then((info) => info.json())
         .then((data) => {
           console.log(data);
           data.data.forEach((element) => {
             console.log(element);
+          });
+        });
+
+      // Fetch available rights and populate the dropdown
+      fetch("http://192.168.5.113:3000/api/user/getrights")
+        .then((response) => response.json())
+        .then((rightsData) => {
+          const rightSelect = document.getElementById("rightID");
+          rightsData.data.forEach((right) => {
+            const option = document.createElement("option");
+            option.value = right.id; // Assuming 'id' is the identifier for the right
+            option.textContent = right.name; // Assuming 'name' is the display name for the right
+            rightSelect.appendChild(option);
           });
         });
     </script>
